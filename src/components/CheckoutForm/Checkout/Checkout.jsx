@@ -22,7 +22,6 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
   useEffect(() => {
     const generateCheckoutToken = async () => {
       try {
-        console.log(cart);
         if(!cart.id) {
           history.push('/');
           return;
@@ -35,12 +34,12 @@ const Checkout = ({ cart, onCaptureCheckout, order, error }) => {
     }
 
     generateCheckoutToken();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cart]);
 
   const nextStep = () => setActiveStep((previousActiveStep) => previousActiveStep+1);
   const backStep = () => setActiveStep((previousActiveStep) => previousActiveStep-1);
   const continuePayment = (data) => {
-    console.log(data);
     setShippingDetails(data);
     nextStep();
   }
